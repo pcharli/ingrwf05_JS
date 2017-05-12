@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>personnel</title>
+	<style>
+		main {
+			display: flex;
+		}
+		aside {
+			width: 25%;
+			margin-right: 8%;
+		}
+		.bad {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<main>
+	<aside>
+	<form action="">
+		<input type="text" id="nom" placeholder="Votre nom">
+		<input type="text" id="prenom" placeholder="Votre prénom">
+		<input type="email" id="email" placeholder="Votre e-mail">
+		<input type="number" id="age" placeholder="Votre âge">
+		<input type="text" id="telephone" placeholder="Votre téléphone"><br>
+		<input type="checkbox" id="inscription"><label for="inscription">Inscription</label><br>
+		<button>Ajouter</button>
+	</form>
+		<ul></ul>
+	</aside>
+	<section>
+		<h1>Nom et le prénom</h1>
+		<dl>
+			<dt>Téléphone</dt>
+			<dd class="tel">0473/85.32.69</dd>
+			<dt>e-mail</dt>
+			<dd class="email">test@cepegra.be</dd>
+			<dt>Age</dt>
+			<dd class="age">0</dd>
+		</dl>
+		<p class="inscrit"></p>
+	</section>
+	</main>
+
+	<script>
+	//exemple d'objet
+	personne = {
+		"nom" : "Charlier", //propriété : value,
+		"prenom" : "Pierre",
+		"telephone" : "0473/56.23.36",
+		"email" : "test@brol.com",
+		"formation" : true,
+		"age" : 48
+	};
+	
+	//datas
+	var myPersonnel = new Array();
+	myPersonnel.push({
+		"nom" : "Charlier",
+		"prenom" : "Pierre",
+		"telephone" : "0473/56.23.36",
+		"email" : "test@brol.com",
+		"formation" : true,
+		"age" : 48
+	});
+	myPersonnel.push({
+		"nom" : "Charlier",
+		"prenom" : "Benoit",
+		"telephone" : "112",
+		"email" : "test@machin.com",
+		"formation" : false,
+		"age" : 46
+	});
+	console.log(myPersonnel);
+
+	// selecteurs
+	var myList = document.querySelector("aside ul");
+	var myTitre = document.querySelector("h1");
+	var myPhone = document.querySelector(".tel");
+	var myEmail = document.querySelector(".email");
+	var myAge = document.querySelector(".age");
+	var myInscrit = document.querySelector(".inscrit");
+	var myBtnNew = document.querySelector("aside button");
+	var myNewNom = document.querySelector("aside #nom");
+	var myNewPrenom = document.querySelector("aside #prenom");
+	var myNewEmail = document.querySelector("aside #email");
+	var myNewTel = document.querySelector("aside #telephone");
+	var myNewAge = document.querySelector("aside #age");
+	var myNewInscrit = document.querySelector("aside #inscription");
+	//console.log(myEmail);
+
+	// affichage des données de la première personne
+	function AffData (id) {
+		myTitre.innerHTML = myPersonnel[id].nom + " " + myPersonnel[id].prenom;
+		myPhone.innerHTML = myPersonnel[id].telephone;
+		myEmail.innerHTML = myPersonnel[id].email;
+		myAge.innerHTML = myPersonnel[id].age;
+		if (myPersonnel[id].formation == true) {
+			myInscrit.innerHTML = "Inscrit";
+			myInscrit.classList.remove("bad");
+		}
+		else {
+			myInscrit.innerHTML = "Pas inscrit";
+			myInscrit.classList.add("bad");
+		}
+	}
+
+	AffData(0);
+
+	//ajout d'une personne
+	myBtnNew.addEventListener("click", function(e) {
+		e.preventDefault();
+		
+		if(myNewInscrit.checked == true) {
+			inscription = true;
+		} 
+		else {inscription = false;}
+		//alert(inscription);
+
+		newPersonne = {
+			"nom" : myNewNom.value,
+			"prenom" : myNewPrenom.value,
+			"telephone" : myNewTel.value,
+			"email" : myNewEmail.value,
+			"age" : myNewAge.value,
+			"formation" : inscription
+		}
+		myPersonnel.push(newPersonne);
+		console.log(myPersonnel);
+		CreateListe();
+
+	});
+
+	// bouclage des personnes et affichage dans aside en ul>li
+	function CreateListe(){
+		myList.innerHTML = ""; // vider le <ul>
+	for (var i = 0; i < myPersonnel.length; i++) {
+		myList.innerHTML += '<li data-id="' + i + '">' + myPersonnel[i].nom + ' ' + myPersonnel[i].prenom + '</li>';
+		};
+
+
+	myLis = document.querySelectorAll("aside li");
+	for (var i = 0; i < myLis.length; i++) {
+		
+		myLis[i].addEventListener("click", function(){
+			var myId = this.getAttribute("data-id");
+			//alert(myId);
+			AffData(myId);
+		});
+	};
+
+}
+
+CreateListe();
+	</script>
+</body>
+</html>
