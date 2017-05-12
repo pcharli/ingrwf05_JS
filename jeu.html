@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Jouons</title>
+		<style>
+			.error {
+				color:red;
+			}
+			.bon {
+				color:green;
+			}
+			.hidden {
+				display: none;
+			}
+			body.error {
+				opacity:0.5;
+			}
+		</style>
+	</head>
+	<body>
+	<h1>Lis dans mes pensées....</h1>
+		<form action="">
+		<input type="number">
+		<button>Jouer</button>
+		</form>
+		<div class="log">
+			<h3>Joués</h3>
+			<p></p>
+		</div>
+		<div class="message"></div>
+		<script>
+		//functions
+		var nbAleatoire;
+		var chanceNb = 10;
+		Main = function() {
+			nbAleatoire = Math.floor(Math.random()*50);
+			alert(nbAleatoire);
+
+		}
+		Main();
+
+		//selecteurs
+		var myInput = document.querySelector("input");
+		var myLog = document.querySelector(".log");
+		var myMessage = document.querySelector(".message");
+		var myForm = document.querySelector("form");
+
+		myForm.addEventListener("submit", function(event) {
+			event.preventDefault();
+
+			if(myInput.value.length > 0) {
+			myNb = parseInt(myInput.value);
+			chanceNb--;
+
+			
+				if ( myNb > nbAleatoire ) {
+				//alert(nbAleatoire);
+				myMessage.innerHTML = "trop grand";
+				myMessage.classList.add("error");
+				myLog.innerHTML += myNb + " ";
+				myInput.value = "";
+				myInput.focus();
+				}
+				else if ( myNb < nbAleatoire ) {
+				myMessage.innerHTML = "trop petit";
+				myMessage.classList.add("error");
+				myLog.innerHTML += myNb + " ";
+				myInput.value = "";
+				myInput.focus();
+				}
+				else { 
+				myMessage.innerHTML = '<strong class="bon">Gagné</strong>';
+				myMessage.classList.remove("error");
+				myLog.innerHTML += '<span class="bon">' + myNb + "</span>";
+				myForm.classList.add("hidden");
+				}
+				if (chanceNb == 0) {
+					 document.querySelector("body").classList.add("error");
+					 alert('fini');
+					 myForm.classList.add('hidden');
+					}
+			} //end if
+			else {alert('tapez un nombre');}
+		});
+
+		</script>
+	</body>
+	</html>	
