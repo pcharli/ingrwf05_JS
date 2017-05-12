@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#survol {
+			background-color: yellow
+		}
+	</style>
+</head>
+<body>
+	<h1>Titre par défaut</h1>
+
+	<p>Lundi</p>
+	<p>Mardi</p>
+	<div id="survol">
+		Passez la souris
+	</div>
+	
+	<script>
+	// functions
+	/*function Main (text) {
+		document.querySelector('h1').innerHTML = text;
+	}*/
+
+	var Main = function(text) {
+		document.querySelector('h1').innerHTML = text;
+	}
+
+	// Sélecteurs
+	myBody = document.querySelector("body");
+	myP = document.querySelector("p");
+	myDiv = document.querySelector("#survol");
+
+	// Events
+	myBody.onload = Main("Youpee");
+
+	myP.onclick = function() {
+		Main(this.innerHTML);
+	}
+
+	myDiv.onmouseover = function() {
+		Main("La souris est dessus");
+	}
+
+	myDiv.onmouseout = function() {
+		Main("Youpee");
+	}
+	</script>
+</body>
+</html>

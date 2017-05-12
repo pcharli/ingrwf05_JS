@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>casques</title>
+	<style>
+	aside {
+		display:inline-block;
+		width: 350px;
+	}
+	section {
+		display: inline-block;
+		vertical-align: top;
+	}
+	aside img {
+		width: 100px;
+		transition: all 2s;
+	}
+	aside li {
+		list-style-type: none;
+	}
+	aside img.fade {
+		opacity: .5;
+	}
+	figcaption {
+		background-color: silver;
+		opacity: .7;
+		height: 30px;
+		margin-top: -30px;
+		line-height: 30px;
+		padding-left: 15px;
+	}
+	</style>
+</head>
+<body>
+	<aside>
+		<ul>
+			<li><img src="images/moto1.jpg" alt="Ceci est la moto1"></li>
+			<li><img src="images/moto2.jpg" alt="moto2"></li>
+			<li><img src="images/moto3.jpg" alt="moto3"></li>
+			<li><img src="images/moto4.jpg" alt="moto4"></li>
+		</ul>
+	</aside>
+		<section>
+		<figure>
+			<img src="images/moto1.jpg" alt="Ceci est la moto1">
+			<figcaption>Ceci est la moto1</figcaption>
+		</figure>
+		</section>
+	<script>
+
+	mignatures = document.querySelectorAll("aside img");
+	bigImg = document.querySelector("section img");
+	legende = document.querySelector("figcaption");
+
+	
+	//image de départ choisie aléatoirement
+	aleatoire - Math.floor(Math.random()*mignatures.length);
+		alert(aleatoire);
+	firstImg = aleatoire;
+
+
+	
+	bigImg.src = mignatures[firstImg].src;
+	bigImg.alt = mignatures[firstImg].alt;
+	legende.innerHTML = mignatures[firstImg].alt;
+	mignatures[firstImg].classList.add("fade");
+
+	
+
+	for(i=0;i<mignatures.length;i++) {
+
+		mignatures[i].onclick = function(){
+			var src = this.src;
+			var alt = this.getAttribute("alt");
+			legende.innerHTML = alt;
+			// alert(src + " " + alt);
+
+			bigImg.src = src;
+			bigImg.setAttribute("src",src);
+			
+					for(i=0;i<mignatures.length;i++) {
+							mignatures[i].classList.remove("fade");
+						} //for
+					
+					this.classList.add("fade");
+			
+		};
+	}
+
+
+	</script>
+</body>
+</html>

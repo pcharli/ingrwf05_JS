@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>search</title>
+</head>
+<body>
+	<header>
+		<form action="" id="search">
+			<input type="text" id="keywords">
+		<button>Search</button>
+		</form>
+	</header>
+	<section></section>
+	<footer>
+		<a href="http://google.be">Google</a>
+	</footer>
+
+	<script>
+
+	var mySearchBtn = document.querySelector("#search button");
+
+	mySearchBtn.onclick =  function(event) {
+		event.preventDefault();
+		mySearch = document.querySelector("#keywords");
+		mySection = document.querySelector("section");
+		myKeywords = mySearch.value;
+		mySection.innerHTML = myKeywords;
+	};
+
+myLink = document.querySelector("footer a");
+	myLink.onclick = function(event){
+		event.preventDefault();
+		alert('test');
+	};
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Calculatrice</title>
+</head>
+<body>
+<header>
+	<form action="">
+		<input type="number" id="nb1">
+		<input type="number" id="nb2"><br>
+		<button>+</button>
+		<button>-</button>
+		<button>*</button>
+		<button>/</button>
+	</form>
+	<div id="resultat">
+		<h1>Résultat</h1>
+		<p></p>
+	</div>
+</header>
+	<script>
+	// selecteurs
+	myNb1 = document.querySelector("#nb1");
+	myNb2 = document.querySelector("#nb2");
+	myResult = document.querySelector("#resultat p");
+	myBtns = document.querySelectorAll("header button");
+
+	//events
+	for (var i = 0; i < myBtns.length; i++) {
+		myBtns[i].addEventListener("click", function(event) {
+			event.preventDefault();
+			myVal1 = myNb1.value;
+			myVal2 = myNb2.value;
+			myOperator = this.innerHTML;
+			
+			Calcul(myVal1, myVal2, myOperator);
+		});
+	};
+
+	// functions
+
+	var Calcul = function (val1, val2, operator) {
+		//alert(val1 + " " + val2 + " " + operator);
+		val1 = parseFloat(val1);
+		val2 = parseFloat(val2);
+
+	/*	if (operator == "+") {
+			total = val1 + val2;
+		}
+		else if (operator == "-") {
+			total = val1 - val2;
+		}
+		else if (operator == "*") {
+			total = val1 * val2;
+		}
+		else  {
+			total = val1 / val2;
+		}
+*/
+		switch (operator) {
+			case "+" :
+				total = val1 + val2;
+				break;
+			case "-" :
+				total = val1 - val2;
+				break;
+			case "*" :
+				total = val1 * val2;
+				break;
+			default :
+				total = val1 / val2;
+		}
+
+		myResult.innerHTML += val1 + operator + val2 + "=" + total +"<br>";
+	};
+
+	</script>
+</body>
+</html>

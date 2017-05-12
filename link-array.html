@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lien array</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="http://www.cepegra.be">Cepegra</a></li>
+				<li><a href="http://www.google.be">Google</a></li>
+				<li><a href="#">Rien</a></li>
+			</ul>
+		</nav>
+	</header>
+	<script>
+	myLinks = document.querySelectorAll("header a");
+	console.log(myLinks);
+	for (var i = 0; i < myLinks.length; i++) {
+		myLinks[i].onclick =  function(event){
+			event.preventDefault();
+			if( confirm("Vous nous quittez pour aller chez "+this.innerHTML + "?") ) {
+				document.location.href = this.href;
+			}
+		}
+		//confirm(myLinks[i].href);
+	};
+	</script>
+</body>
+</html>

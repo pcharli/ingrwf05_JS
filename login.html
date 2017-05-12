@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>login</title>
+	<style>
+		section {
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<form action="" id="login">
+		<input placeholder="login" type="text" id="pseudo">
+		<button>Go</button>
+		</form>
+	</header>
+	<section>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut minima dignissimos iure debitis architecto. Minus, ipsum, quaerat! Ut, at ratione est sapiente placeat a, minima ullam totam similique labore, enim.</section>
+	<script>
+	var myLogBtn = document.querySelector("#login button");
+
+	myLogBtn.onclick = function(event) {
+		event.preventDefault();
+		myLogField = document.querySelector("#pseudo");
+		myLog = myLogField.value;
+		//alert(myLog);
+
+		if ( myLog == 'admin' ) {
+			alert('ok');
+			mySection = document.querySelector('section');
+			mySection.style.display = 'block';
+		}
+		else if( myLog == '' ) {
+			alert('Tapez votre pseudo');
+		}
+		else {
+			alert('pas ok');
+		}
+	};
+	</script>
+</body>
+</html>

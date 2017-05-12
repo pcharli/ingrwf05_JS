@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>loginForm</title>
+	<style>
+		form, #loginForm > p > a {
+			transition: all 2s ease-out;
+			/*opacity: 1;*/
+    		height: auto;
+    		display: block;
+		}
+		.hidden {
+    		transition: all 2s ease-out;
+    		/*opacity: 0; */
+    		height: 0;
+    		overflow: hidden;
+		}
+
+	</style>
+</head>
+<body>
+<header>
+	<div id="loginForm">
+	<p><a href="">Login</a></p>
+	<form action="" class="hidden">
+		<p><a href="">Close</a></p>
+		<input type="text" id="login">
+		<input type="password" id="password">
+		<button>Identification</button>
+	</form>
+	</div>
+</header>
+	<script>
+	var myLogForm = document.querySelector("#loginForm form");
+	var myLogLinks = document.querySelectorAll("#loginForm > p, #loginForm form p");
+
+	for(i=0; i < myLogLinks.length; i++) {
+	myLogLinks[i].addEventListener("click", function(e) {
+		Change(e);
+		});
+	}
+
+	function Change(e) {
+		e.preventDefault();
+		myLogLinks[0].classList.toggle("hidden");
+		myLogForm.classList.toggle("hidden");
+	}
+	</script>
+</body>
+</html>

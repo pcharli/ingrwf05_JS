@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>JavaScript pour les nulls</title>
+
+</head>
+<body>
+	<h1>Titre</h1>
+	<section>Texte par défaut</section>
+	<script>
+	/* comentaire
+	sur deux lignes */
+		var name = 'Charlier'; //string
+		var firstname = 'Pierre';
+		var age = 48; //number
+		var inscription = true; //booléen
+		var resultat = 50.56 //decimal
+		//console.log( name + ' ' + firstname );
+		//console.log( age + resultat );
+		var surnames = firstname + ' Jean Charles André';
+		//console.log( surnames );
+		var mySection = document.querySelector('section');
+		
+		mySection.innerHTML = surnames;
+		console.log(mySection.innerHTML);
+	</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event</title>
+</head>
+<body>
+	<button>Go</button>
+	<a href="#">Stop</a>
+
+	<script>
+	var myBtn = document.querySelector("button");
+	var myLink = document.querySelector("a");
+
+	myBtn.addEventListener('click', function(event) {
+		event.preventDefault();
+		alert('ok new');
+	});
+
+	myLink.addEventListener("click", function(event) {
+		event.preventDefault();
+		console.log("test");
+		myBtn.removeEventListener('click', function(){
+			alert('retiré');
+		});
+	});
+	
+
+		myBtn.onclick =  function() {
+		alert('ok old');
+	};
+	</script>
+</body>
+</html>

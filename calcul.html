@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>calcul</title>
+</head>
+<body>
+	<header>
+		<form action="" id="calcul">
+			<input type="number" id="nb1">
+			<input type="number" id="nb2">
+			<button>Additionne</button>
+		</form>
+	</header>
+	<section></section>
+	<script>
+	myCalcBtn = document.querySelector('#calcul button');
+	myCalcBtn.onclick = function(event) {
+		event.preventDefault();
+		myNb1 = document.querySelector('#nb1');
+		myNb2 = document.querySelector('#nb2');
+		myTotal = parseFloat(myNb1.value) + parseInt(myNb2.value);
+		mySection = document.querySelector("section");
+		mySection.innerHTML = myTotal;
+		mySection.style.color = 'red';
+	};
+	</script>
+</body>
+</html>

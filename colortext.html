@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>colorText</title>
+	<style>
+	header {
+		display: flex;
+	}
+	header div {
+		height: 50px;
+		width: 50px;
+		cursor: pointer;
+		background-color: attr(data-color);
+	}
+	
+	/* [data-color=red] {background-color:red}
+	[data-color=green] {background-color:green}
+	[data-color=blue] {background-color:blue}
+	[data-color=yellow] {background-color:yellow} */
+	</style>
+</head>
+<body>
+	<header>
+		<div id="blue" data-color="blue"></div>
+		<div id="red" data-color="red"></div>
+		<div id="green" data-color="green"></div>
+		<div id="yellow" data-color="yellow"></div>
+	</header>
+	<main>
+		<h1>Titre</h1>
+	</main>
+	<script src="colorText.js"></script>
+</body>
+</html>
